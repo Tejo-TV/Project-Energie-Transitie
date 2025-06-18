@@ -25,11 +25,11 @@ try{
 // Om connectie te testen haal de echo comando's uit de comment (select regel en dan: ctr + /)
 // -----------------------------------------------------------
 catch(mysqli_sql_exception){
-    echo"<h1>Database '$db_name' could not connect!</h1>";
+    // echo"<h1>Database '$db_name' could not connect!</h1>";
 }
 
 if($conn){
-    echo"<h1>Database '$db_name' is connected!</h1>";
+    // echo"<h1>Database '$db_name' is connected!</h1>";
 } 
 ?>
 

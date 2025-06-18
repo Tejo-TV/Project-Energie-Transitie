@@ -12,18 +12,18 @@ if (isset($_POST["register"])) {
 
     // alle items die worden gepost worden in een apparte variable gezet
     $naam = $_POST["voornaam"];
-    $tussenv = $_POST["tussenv"];
-    $achternaam = $_POST["achternaam"];
     $email = $_POST["email"];
+    $adress = "none";
     $ww = $_POST["ww"];
     $wwrepeat = $_POST["wwrepeat"];
+    $rol = 1;
 
     // include de database connectie en de functies file.
     require_once '../../config/DB_connect.php';
     require_once 'functions.inc.php';
 
     // als de variable leeg is stuurt de pagina je trug
-    if (emptyInputRegister($naam, $achternaam, $email, $ww, $wwrepeat) !== false) {
+    if (emptyInputRegister($naam, $email, $ww, $wwrepeat) !== false) {
         echo "<script>window.location.href = '../register.php?error=emptyinput';</script>";
         exit();
     }
@@ -46,7 +46,7 @@ if (isset($_POST["register"])) {
         exit();
     }
 
-    createUser($conn, $naam, $tussenv, $achternaam, $email, $ww);
+    createUser($conn, $naam, $email, $adress, $ww, $rol);
 
 } else {
     // stuurt persoon terug als er niks te doen is op deze pagina.

@@ -9,9 +9,9 @@
 //---------------------------------------------------------------------------------------------------//
 
 // Check of de variable leeg zijn
-function emptyInputRegister($name, $achternaam, $email, $ww, $wwrepeat) {
+function emptyInputRegister($name, $email, $ww, $wwrepeat) {
     $result;
-    if(empty($name) || empty($achternaam) || empty($email) || empty($ww) || empty($wwrepeat)){
+    if(empty($name) || empty($email) || empty($ww) || empty($wwrepeat)){
         $result = true;
     } else {
         $result = false;
@@ -63,8 +63,8 @@ function emailExists($conn, $email) {
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $naam, $tussenv, $achternaam, $email, $ww) {
-    $sql = "INSERT INTO user (voornaam, tussenvoegsel, achternaam, email, wachtwoord) VALUES (?, ?, ?, ?, ?);";
+function createUser($conn, $naam, $email, $address, $ww, $rol) {
+    $sql = "INSERT INTO user (name, email, address_id, password, rol_id) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         echo "<script>window.location.href = '../register.php?error=stmtfailed';</script>";
@@ -73,7 +73,7 @@ function createUser($conn, $naam, $tussenv, $achternaam, $email, $ww) {
 
     $db_ww = hash('sha256', $ww);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $naam, $tussenv, $achternaam, $email, $db_ww);
+    mysqli_stmt_bind_param($stmt, "ssisi", $naam, $email, $address, $db_ww, $rol);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     echo "<script>window.location.href = '../login.php?error=none';</script>";
