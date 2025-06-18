@@ -98,7 +98,7 @@ function loginUser($conn, $email, $ww) {
         exit();
     }
 
-    $db_ww = $emailExists["wachtwoord"];
+    $db_ww = $emailExists["password"];
     $wwHashed = hash('sha256', $ww);
     if($db_ww === $wwHashed) {
         $wwChecker = true;
