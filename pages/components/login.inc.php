@@ -1,5 +1,13 @@
 <?php
 
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : login.inc.php
+// Omschrijving		  : Op deze pagina wordt de login verwerkt
+// Naam ontwikkelaar  : Tejo Veldman, dominik
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+
 if (isset($_POST["login"])) {
 
     // alle items die worden gepost worden in een apparte variable gezet

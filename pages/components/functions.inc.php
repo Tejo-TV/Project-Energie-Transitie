@@ -1,5 +1,13 @@
 <?php
 
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : functions.inc.php
+// Omschrijving		  : Op deze pagina taan alle functies voor de inc.php files
+// Naam ontwikkelaar  : Tejo Veldman, dominik
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+
 // Check of de variable leeg zijn
 function emptyInputRegister($name, $achternaam, $email, $ww, $wwrepeat) {
     $result;
