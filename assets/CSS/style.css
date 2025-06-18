@@ -4,6 +4,55 @@
 }
 
 /* ---------------------
+    popup styes 
+--------------------- */   
+.popup,
+.popup2 {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  text-align: center;
+  z-index: 1000;
+  display: block; 
+  opacity: 0;
+  animation: popup-fade-in 7s forwards;
+}
+
+.popup {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.popup2 {
+  background-color: #fa2121;
+  color: white;
+}
+
+@keyframes popup-fade-in {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  10% {
+    opacity: 1;
+    top: 20px;
+  }
+  90% {
+    opacity: 1;
+    top: 20px;
+  }
+  100% {
+    opacity: 0;
+    top: 0;
+  }
+}
+
+/* ---------------------
     login page 
 --------------------- */   
 
