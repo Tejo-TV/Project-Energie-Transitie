@@ -40,7 +40,7 @@ if (isset($_SESSION['user'])){
 </head>
 <body>
     <form method="post" action="pages/components/logout.inc.php">
-        <button type="submit" name="logout">Log out</button>
+        <button type="submit">Log out</button>
     </form>
 </body>
 </html>
