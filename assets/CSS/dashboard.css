@@ -1,0 +1,14 @@
+/* Dashboard specifieke styling */
+.dashboard-container { padding: 30px; }
+.dashboard-header h2 { margin: 0 0 20px 0; }
+.dashboard-main { display: flex; gap: 30px; }
+.chart-section, .calendar-section, .usage-section, .cost-section { background: #eaf6f7; border-radius: 10px; padding: 20px; }
+.chart-placeholder { height: 120px; background: #b2d8d8; border-radius: 10px; }
+.usage-bar { display: flex; align-items: center; margin: 10px 0; }
+.usage-bar .bar { height: 15px; background: #a2e3c4; border-radius: 5px; margin-left: 10px; min-width: 50px; }
+.energy-cost { text-align: center; }
+.cost-value { font-size: 2em; margin-top: 10px; }
+.calendar-widget { }
+.calendar-tabs button { margin-right: 5px; }
+.calendar-table table { width: 100%; border-collapse: collapse; }
+.calendar-table th, .calendar-table td { padding: 3px; text-align: center; } 

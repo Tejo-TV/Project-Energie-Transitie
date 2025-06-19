@@ -1,13 +1,14 @@
 <?php
 
 //---------------------------------------------------------------------------------------------------//
-// Naam script		  : register.inc.php
-// Omschrijving		  : Op deze pagina wordt de register verwerkt
-// Naam ontwikkelaar  : Tejo Veldman, dominik
-// Project		      : Energie Transitie
-// Datum		      : projectweek - periode 4 - 2025
+// Naam script       : register.inc.php
+// Omschrijving      : Op deze pagina wordt de register verwerkt
+// Naam ontwikkelaar : Tejo Veldman, dominik
+// Project           : Energie Transitie
+// Datum             : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 
+// Controleer of het registratieformulier is verstuurd
 if (isset($_POST["register"])) {
 
     // alle items die worden gepost worden in een apparte variable gezet
@@ -18,34 +19,35 @@ if (isset($_POST["register"])) {
     $wwrepeat = $_POST["wwrepeat"];
     $rol = 1;
 
-    // include de database connectie en de functies file.
+    // Laad de databaseconnectie en functies
     require_once '../../config/DB_connect.php';
     require_once 'functions.inc.php';
 
-    // als de variable leeg is stuurt de pagina je trug
+    // Controleer of verplichte velden zijn ingevuld
     if (emptyInputRegister($naam, $email, $ww, $wwrepeat) !== false) {
         echo "<script>window.location.href = '../register.php?error=emptyinput';</script>";
         exit();
     }
 
-    // Als de email geen valid email is stuurt de pagina je terug
+    // Controleer of het e-mailadres geldig is
     if (invalidEmail($email) !== false) {
         echo "<script>window.location.href = '../register.php?error=invalidemail';</script>";
         exit();
     }
 
-    // Als de wachtwoorden niet het zelfde zijn stuurt de pagina je terug
+    // Controleer of de wachtwoorden overeenkomen
     if (wwMatch($ww, $wwrepeat) !== false) {
         echo "<script>window.location.href = '../register.php?error=wwnietzelfde';</script>";
         exit();
     }
 
-     // Als de email al bestaat stuurt de pagina je terug
+    // Controleer of het e-mailadres al bestaat
     if (emailExists($conn, $email) !== false) {
         echo "<script>window.location.href = '../register.php?error=emailTaken';</script>";
         exit();
     }
 
+    // Maak de gebruiker aan in de database
     createUser($conn, $naam, $email, $adress, $ww, $rol);
 
 } else {

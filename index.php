@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])){
     echo "no user found";
 }
 
-
+include 'pages/dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -10,7 +10,7 @@
 
 require_once 'class.php';
 
-// Check of de variable leeg zijn
+// Controleer of de verplichte velden bij registratie zijn ingevuld
 function emptyInputRegister($name, $email, $ww, $wwrepeat) {
     $result;
     if(empty($name) || empty($email) || empty($ww) || empty($wwrepeat)){
@@ -21,7 +21,7 @@ function emptyInputRegister($name, $email, $ww, $wwrepeat) {
     return $result;
 }
 
-// Check of de layout email klopt
+// Controleer of het e-mailadres een geldig formaat heeft
 function invalidEmail($email) {
     $result;
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -32,6 +32,7 @@ function invalidEmail($email) {
     return $result;
 }
 
+// Controleer of de wachtwoorden overeenkomen
 function wwMatch($ww, $wwrepeat) {
     $result;
     if($ww !== $wwrepeat){
@@ -42,6 +43,7 @@ function wwMatch($ww, $wwrepeat) {
     return $result;
 }
 
+// Controleer of het e-mailadres al bestaat in de database
 function emailExists($conn, $email) {
     $sql = "SELECT * FROM user WHERE email = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -65,6 +67,7 @@ function emailExists($conn, $email) {
     mysqli_stmt_close($stmt);
 }
 
+// Maak een nieuwe gebruiker aan in de database
 function createUser($conn, $naam, $email, $address, $ww, $rol) {
     $sql = "INSERT INTO user (name, email, address_id, password, rol_id) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
@@ -82,6 +85,7 @@ function createUser($conn, $naam, $email, $address, $ww, $rol) {
     exit();
 }
 
+// Controleer of de verplichte velden bij login zijn ingevuld
 function emptyInputLogin($email, $ww) {
     $result;
     if(empty($email) || empty($ww)){
@@ -92,6 +96,7 @@ function emptyInputLogin($email, $ww) {
     return $result;
 }
 
+// Probeer de gebruiker in te loggen met de opgegeven gegevens
 function loginUser($conn, $email, $ww) {
     $emailExists = emailExists($conn, $email);
 
@@ -112,11 +117,12 @@ function loginUser($conn, $email, $ww) {
         echo "<script>window.location.href = '../login.php?error=wrongLogin';</script>";
         exit();
     } else if ($wwChecker === true) {
+        // Start een sessie en sla de gebruiker op in de sessie
         session_start();
         if(isset($emailExists["ID"])){
             $_SESSION["inlog"] = true;
         }
-        
+        // Maak een User-object aan en sla deze op in de sessie
         $newUser = new User(
             $emailExists["ID"],     // id
             $emailExists["name"],     // name
