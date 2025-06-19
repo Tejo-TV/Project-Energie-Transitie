@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../assets/CSS/style.css" />
     <link rel="shortcut icon" type="x-icon" href="../assets/images/profile.svg">
   </head>
-  <body class="login">
+<body class="login">
 <!-- account aangemaakt popup -->
  <?php
  
@@ -42,22 +42,23 @@
  ?>
 
 <!-- main body -->
-      <img class="login_logo" alt="login-logo" src="../assets/images/electricity.svg" />
+  <a href="../index.php"><img class="login_arrow" alt="login-logo" src="../assets/images/arrow.svg" draggable="false" /></a>
+  <img class="login_logo" alt="login-logo" src="../assets/images/electricity.svg" draggable="false" />
 
-      <div class="login_div">
-        <form action="components/login.inc.php" method="POST">
-          <input type="email" name="email" placeholder="Voer uw e-mail in" required />
+  <div class="login_div">
+    <form action="components/login.inc.php" method="POST">
+      <input type="email" name="email" placeholder="Voer uw e-mail in" required />
 
-          <div class="passwd-wrap">
-            <input type="password" id="password" name="ww" placeholder="Voer uw wachtwoord in" required>
-          </div>
-
-          <button type="submit" name="login" class="login-button">Login</button>
-        </form>
-        <p class="signup">
-          Heb je geen account?
-          <a href="register.php"><span class="free">Registreer nu gratis</span>!</a>
-        </p>
+      <div class="passwd-wrap">
+        <input type="password" id="password" name="ww" placeholder="Voer uw wachtwoord in" required>
       </div>
-  </body>
+
+      <button type="submit" name="login" class="login-button">Login</button>
+    </form>
+    <p class="signup">
+      Heb je geen account?
+      <a href="register.php"><span class="free">Registreer nu gratis</span>!</a>
+    </p>
+  </div>
+</body>
 </html>

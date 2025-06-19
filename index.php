@@ -10,6 +10,7 @@
 session_start();
 require_once 'pages/components/class.php';
 
+// Volgende code haalt alle user informatie uit een class
 if (isset($_SESSION['user'])){
     $storedUser = unserialize($_SESSION['user']);
     $userID = $storedUser->getId();
@@ -17,15 +18,16 @@ if (isset($_SESSION['user'])){
     $userEmail = $storedUser->getEmail();
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
-} else {
-    echo "no user found";
-}
 
-echo $userID . "<br>" .
+    echo $userID . "<br>" .
      $userName . "<br>" .
      $userEmail . "<br>" .
      $userAddressId . "<br>" .
      $userRol . "<br>";
+     
+} else {
+    echo "no user found";
+}
 
 
 ?>
