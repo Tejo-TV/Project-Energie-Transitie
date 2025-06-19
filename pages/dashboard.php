@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Energie Transitie</title>
+    <!-- Koppel de dashboard-specifieke CSS -->
     <link rel="stylesheet" href="assets/CSS/dashboard.css">
 </head>
 <body>
-<?php include __DIR__ . '/components/header.php'; ?>
+<?php 
+// Voeg de header toe (logo, titel, evt. navigatie)
+include __DIR__ . '/components/header.php'; 
+?>
 <div class="dashboard-container">
+    <!-- Dashboard header met begroeting (dynamisch via Vue.js) -->
     <div class="dashboard-header">
         <div id="greeting-app">
             <h2>{{ greeting }}</h2>
         </div>
     </div>
+    <!-- Hoofdgrid van het dashboard: grafiek, kalender, usage, kosten -->
     <div class="dashboard-main">
+        <!-- Linksboven: grafiek met stroomverbruik (Chart.js) -->
         <div class="chart-section">
             <?php include __DIR__ . '/components/chart.php'; ?>
         </div>
+        <!-- Rechtsboven: kalender met energie-data -->
         <div class="calendar-section">
             <?php include __DIR__ . '/components/calendar.php'; ?>
         </div>
+        <!-- Vue.js secties voor usage en kosten (linksonder en rechtsonder) -->
         <div id="vue-sections" style="display: contents;">
+            <!-- Linksonder: usage by device, met show/hide knop -->
             <div class="usage-section">
                 <button @click="showUsage = !showUsage">{{ showUsage ? 'Hide' : 'Show' }} Usage by device</button>
                 <div v-show="showUsage">
                     <?php include __DIR__ . '/components/usage.php'; ?>
                 </div>
             </div>
+            <!-- Rechtsonder: energiekosten, met maand-selector -->
             <div class="cost-section">
                 <div class="energy-cost">
                     <h4>Energi kost<br>
@@ -40,9 +51,10 @@
         </div>
     </div>
 </div>
+<!-- Laad Vue.js voor dynamische onderdelen -->
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script>
-// Alleen begroeting
+// Vue-app voor de begroeting bovenaan (verandert op basis van tijd)
 const { createApp } = Vue;
 createApp({
   data() {
@@ -56,7 +68,7 @@ createApp({
     }
   }
 }).mount('#greeting-app');
-// Alleen usage/cost-secties
+// Vue-app voor usage/cost-secties (show/hide usage, maand-selectie voor kosten)
 createApp({
   data() {
     return {
@@ -80,6 +92,7 @@ createApp({
     }
   },
   computed: {
+    // Berekent de kostenwaarde op basis van de geselecteerde maand
     costValue() {
       return this.costPerMonth[this.month] || '0000,0';
     }
