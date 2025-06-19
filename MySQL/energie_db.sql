@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 18 jun 2025 om 14:06
+-- Gegenereerd op: 19 jun 2025 om 10:38
 -- Serverversie: 10.4.32-MariaDB
 -- PHP-versie: 8.2.12
 
@@ -67,9 +67,16 @@ CREATE TABLE `user` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `address_id` varchar(11) NOT NULL,
-  `password` varchar(500) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `rol_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `user`
+--
+
+INSERT INTO `user` (`ID`, `name`, `email`, `address_id`, `password`, `rol_id`) VALUES
+(4, 'Tester', 'test@gmail.com', '0', 'abb1277ab09e340e2811ca9ff9b64c56bc39f4c28e0f01df9169f558494002cf', 1);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -113,7 +120,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="shortcut icon" type="x-icon" href="">
+    <link rel="shortcut icon" type="x-icon" href="../assets/images/profile.svg">
 </head>
 <body class="register">
     <?php
@@ -48,25 +48,26 @@
   
     ?>
 
-            <img class="register_logo" alt="register-logo" src="../assets/images/electricity.svg" />
-        <div class="register_div">
-            <form action="components/register.inc.php" method="POST">  
+  <a href="../index.php"><img class="register_arrow" alt="login-logo" src="../assets/images/arrow.svg" draggable="false" /></a>
+  <img class="register_logo" alt="register-logo" src="../assets/images/electricity.svg" draggable="false" />
+  <div class="register_div">
+    <form action="components/register.inc.php" method="POST">  
 
-                <input type="text" class="register_input" name="voornaam" placeholder="Voer uw naam in" required>
+      <input type="text" class="register_input" name="voornaam" placeholder="Voer uw naam in" required>
 
-                <input type="email" class="register_input" name="email" placeholder="Voer uw e-mail in" required>
+      <input type="email" class="register_input" name="email" placeholder="Voer uw e-mail in" required>
 
-                <ul class="wachtwoordregels"> <li>Wachtwoord moet minimaal 8 karakters bevatten.</li><li>Met minstens 1 Speciaal teken.</li><li>Met minstens 1 letter en cijfer.</li></ul> 
-                <input type="password" class="register_inputww" name="ww" placeholder="Voer uw wachtwoord in" minlength="8" pattern=".*[\d].*" pattern=".*[\W_].*" required>
+      <ul class="wachtwoordregels"> <li>Wachtwoord moet minimaal 8 karakters bevatten.</li><li>Met minstens 1 Speciaal teken.</li><li>Met minstens 1 letter en cijfer.</li></ul> 
+      <input type="password" class="register_inputww" name="ww" placeholder="Voer uw wachtwoord in" minlength="8" pattern=".*[\d].*" pattern=".*[\W_].*" required>
 
-                <input type="password" class="register_inputww" name="wwrepeat" placeholder="Voer uw wachtwoord opnieuw in" minlength="8"  pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$" required>
+      <input type="password" class="register_inputww" name="wwrepeat" placeholder="Voer uw wachtwoord opnieuw in" minlength="8"  pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$" required>
                 
-                <button type="submit" name="register" class="register-button" >Registreer nu</button>
-            </form>
-            <p class="signup">
-              Heb je al een account?
-            <a href="login.php"><span class="free">Log in</span>!</a>
-            </p>
-    </div>
+      <button type="submit" name="register" class="register-button" >Registreer nu</button>
+    </form>
+    <p class="signup">
+      Heb je al een account?
+      <a href="login.php"><span class="free">Log in</span>!</a>
+    </p>
+  </div>
 </body>
 </html>

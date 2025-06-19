@@ -55,3 +55,4 @@ if (isset($_POST["register"])) {
 }
 
 ?>
+<title>Redirect</title>
