@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="shortcut icon" type="x-icon" href="">
+    <link rel="shortcut icon" type="x-icon" href="../assets/images/profile.svg">
 </head>
 <body class="register">
     <?php

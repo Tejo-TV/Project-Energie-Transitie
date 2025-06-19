@@ -29,4 +29,5 @@ if (isset($_POST["login"])) {
     echo "<script>window.location.href = '../login.php?error=wrongWay';</script>";
     exit();
 }
-
+?>
+<title>Redirection</title>

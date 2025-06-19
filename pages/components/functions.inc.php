@@ -8,6 +8,8 @@
 // Datum		      : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 
+require_once 'class.php';
+
 // Check of de variable leeg zijn
 function emptyInputRegister($name, $email, $ww, $wwrepeat) {
     $result;
@@ -111,8 +113,22 @@ function loginUser($conn, $email, $ww) {
         exit();
     } else if ($wwChecker === true) {
         session_start();
-        $_SESSION["userid"] = $emailExists["ID"];
-        echo "<script>window.location.href = '../account.php?error=none';</script>";
+        if(isset($emailExists["ID"])){
+            $_SESSION["inlog"] = true;
+        }
+        
+        $newUser = new User(
+            $emailExists["ID"],     // id
+            $emailExists["name"],     // name
+            $emailExists["email"],     // email
+            $emailExists["address_id"],     // address_id
+            $emailExists["rol_id"]      // role_id
+        );
+        $_SESSION['user'] = serialize($newUser);
+        echo "<script>window.location.href = '../../index.php?error=none';</script>";
         exit();
     }
 }
+?>
+
+<title>Redirection</title>
