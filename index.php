@@ -44,6 +44,7 @@ if(isset($_GET["error"])) {
     <title>Dashboard</title>
 </head>
 <body>
+    <!-- Overlay voor NIET ingelogde -->
     <div class="<?php echo $welcomeOverlay; ?>">
         <h1>Welkom bij onze applicatie!</h1>
         <p>Om toegang te krijgen tot het dashboard en gebruik te maken van alle functies, vragen we je om eerst in te loggen. Heb je nog geen account? Registreer je dan eenvoudig en snel.</p>
@@ -51,6 +52,15 @@ if(isset($_GET["error"])) {
             <h2>Login of Registreren</h2>
             <a href="pages/login.php"><button>Login</button></a>
             <a href="pages/register.php"><button>Register</button></a>
+        </div>
+    </div>
+
+    <!-- Overlay voor als je wilt uitloggen -->
+         <div class="logout_overlay" id="logoutOverlay">
+            <div class="overlay_popup">
+            <h2>Weet je zeker dat je wilt uitloggen?</h2>
+            <a href="pages/components/login/logout.inc.php"><button>Logout</button></a>
+            <button onclick="cancelLogoutOverlay()">Annuleren</button>
         </div>
     </div>
 </body>

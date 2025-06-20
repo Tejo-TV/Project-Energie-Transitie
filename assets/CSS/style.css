@@ -436,6 +436,28 @@ body {
     background-color: #0056b3;
 }
 
+.logout_overlay {
+  position: fixed;
+  inset: 0; 
+  backdrop-filter: blur(2px);
+  background-color: rgba(189, 189, 189, 0.4);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.logout_overlay a button{
+    background-color: #00fffb;
+}
+
+.logout_overlay button{
+    background-color: #fa2121;
+}
+
 /* ---------------------
     header style
 --------------------- */
