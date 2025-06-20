@@ -12,12 +12,6 @@
 include_once __DIR__ . '/components/header.php'; 
 ?>
 <div class="dashboard-container">
-    <!-- Dashboard header met begroeting (dynamisch via Vue.js) -->
-    <div class="dashboard-header">
-        <div id="greeting-app">
-            <h2>{{ greeting }}</h2>
-        </div>
-    </div>
     <!-- Hoofdgrid van het dashboard: grafiek, kalender, usage, kosten -->
     <div class="dashboard-main">
         <!-- Linksboven: grafiek met stroomverbruik (Chart.js) -->

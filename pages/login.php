@@ -6,6 +6,7 @@
 // Project		      : Energie Transitie
 // Datum		        : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
+session_start();
 ?>
 <html lang="en">
   <head>
@@ -16,9 +17,15 @@
     <link rel="shortcut icon" type="x-icon" href="../assets/images/profile.svg">
   </head>
 <body class="login">
-<!-- account aangemaakt popup -->
+
  <?php
- 
+// Redirect wanneer al ingelogd
+if (isset($_SESSION['user'])){
+    echo "<script>window.location.href = '../index.php?error=wrongWay';</script>";
+    exit();
+}
+
+// account aangemaakt popup
  if(isset($_GET["error"])) {
   if ($_GET["error"] == "none"){
     echo "<div class='popup'>

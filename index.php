@@ -20,17 +20,22 @@ if (isset($_SESSION['user'])){
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
 
-    echo $userID . "<br>" .
-     $userName . "<br>" .
-     $userEmail . "<br>" .
-     $userAddressId . "<br>" .
-     $userRol . "<br>";
+    $welcomeOverlay = "none_overlay";
 
 } else {
-    echo "no user found";
+    $welcomeOverlay = "overlay";
 }
 
+//popup
+if(isset($_GET["error"])) {
+    if ($_GET["error"] == "wrongWay") {
+        echo "<div class='popup2'>
+          <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je bent al ingelogd! </p>
+          </div>";
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,8 +44,15 @@ if (isset($_SESSION['user'])){
     <title>Dashboard</title>
 </head>
 <body>
-    <form method="post" action="pages/components/login/logout.inc.php">
-        <button type="submit">Log out</button>
-    </form>
+    <div class="<?php echo $welcomeOverlay; ?>">
+        <h1>Welkom bij onze applicatie!</h1>
+        <p>Om toegang te krijgen tot het dashboard en gebruik te maken van alle functies, vragen we je om eerst in te loggen. Heb je nog geen account? Registreer je dan eenvoudig en snel.</p>
+        <div class="overlay_popup">
+            <h2>Login of Registreren</h2>
+            <a href="pages/login.php"><button>Login</button></a>
+            <a href="pages/register.php"><button>Register</button></a>
+        </div>
+    </div>
 </body>
+<script src="assets/JS/script.js"></script>
 </html>
