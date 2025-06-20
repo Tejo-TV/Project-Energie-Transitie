@@ -9,7 +9,7 @@
 <body>
 <?php 
 // Voeg de header toe (logo, titel, evt. navigatie)
-include __DIR__ . '/components/header.php'; 
+include_once __DIR__ . '/components/header.php'; 
 ?>
 <div class="dashboard-container">
     <!-- Dashboard header met begroeting (dynamisch via Vue.js) -->
@@ -22,11 +22,11 @@ include __DIR__ . '/components/header.php';
     <div class="dashboard-main">
         <!-- Linksboven: grafiek met stroomverbruik (Chart.js) -->
         <div class="chart-section">
-            <?php include __DIR__ . '/components/chart.php'; ?>
+            <?php include_once __DIR__ . '/components/chart.php'; ?>
         </div>
         <!-- Rechtsboven: kalender met energie-data -->
         <div class="calendar-section">
-            <?php include __DIR__ . '/components/calendar.php'; ?>
+            <?php include_once __DIR__ . '/components/calendar.php'; ?>
         </div>
         <!-- Vue.js secties voor usage en kosten (linksonder en rechtsonder) -->
         <div id="vue-sections" style="display: contents;">
@@ -34,7 +34,7 @@ include __DIR__ . '/components/header.php';
             <div class="usage-section">
                 <button @click="showUsage = !showUsage">{{ showUsage ? 'Hide' : 'Show' }} Usage by device</button>
                 <div v-show="showUsage">
-                    <?php include __DIR__ . '/components/usage.php'; ?>
+                    <?php include_once __DIR__ . '/components/usage.php'; ?>
                 </div>
             </div>
             <!-- Rechtsonder: energiekosten, met maand-selector -->

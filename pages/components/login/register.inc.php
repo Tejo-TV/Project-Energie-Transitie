@@ -20,30 +20,30 @@ if (isset($_POST["register"])) {
     $rol = 1;
 
     // Laad de databaseconnectie en functies
-    require_once '../../config/DB_connect.php';
+    require_once '../../../config/DB_connect.php';
     require_once 'functions.inc.php';
 
     // Controleer of verplichte velden zijn ingevuld
     if (emptyInputRegister($naam, $email, $ww, $wwrepeat) !== false) {
-        echo "<script>window.location.href = '../register.php?error=emptyinput';</script>";
+        echo "<script>window.location.href = '../../register.php?error=emptyinput';</script>";
         exit();
     }
 
     // Controleer of het e-mailadres geldig is
     if (invalidEmail($email) !== false) {
-        echo "<script>window.location.href = '../register.php?error=invalidemail';</script>";
+        echo "<script>window.location.href = '../../register.php?error=invalidemail';</script>";
         exit();
     }
 
     // Controleer of de wachtwoorden overeenkomen
     if (wwMatch($ww, $wwrepeat) !== false) {
-        echo "<script>window.location.href = '../register.php?error=wwnietzelfde';</script>";
+        echo "<script>window.location.href = '../../register.php?error=wwnietzelfde';</script>";
         exit();
     }
 
     // Controleer of het e-mailadres al bestaat
     if (emailExists($conn, $email) !== false) {
-        echo "<script>window.location.href = '../register.php?error=emailTaken';</script>";
+        echo "<script>window.location.href = '../../register.php?error=emailTaken';</script>";
         exit();
     }
 
@@ -52,7 +52,7 @@ if (isset($_POST["register"])) {
 
 } else {
     // stuurt persoon terug als er niks te doen is op deze pagina.
-    echo "<script>window.location.href = '../register.php?error=wrongWay';</script>";
+    echo "<script>window.location.href = '../../register.php?error=wrongWay';</script>";
     exit();
 }
 

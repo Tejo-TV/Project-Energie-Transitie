@@ -16,12 +16,12 @@ if (isset($_POST["login"])) {
     $ww = $_POST["ww"];
 
     // Laad de databaseconnectie en functies
-    require_once '../../config/DB_connect.php';
+    require_once '../../../config/DB_connect.php';
     require_once 'functions.inc.php';
 
     // Controleer of verplichte velden zijn ingevuld
     if (emptyInputLogin($email, $ww) !== false) {
-        echo "<script>window.location.href = '../login.php?error=emptyinput';</script>";
+        echo "<script>window.location.href = '../../login.php?error=emptyinput';</script>";
         exit();
     }
 
@@ -29,7 +29,7 @@ if (isset($_POST["login"])) {
     loginUser($conn, $email, $ww);
 } else {
     // Als deze pagina direct wordt bezocht, stuur terug naar login
-    echo "<script>window.location.href = '../login.php?error=wrongWay';</script>";
+    echo "<script>window.location.href = '../../login.php?error=wrongWay';</script>";
     exit();
 }
 ?>

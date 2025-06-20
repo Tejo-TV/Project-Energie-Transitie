@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------------------------------//
 session_start();
 require_once 'pages/components/class.php';
-include 'pages/dashboard.php';
+include_once 'pages/dashboard.php';
 
 // Volgende code haalt alle user informatie uit een class
 if (isset($_SESSION['user'])){
@@ -39,7 +39,7 @@ if (isset($_SESSION['user'])){
     <title>Dashboard</title>
 </head>
 <body>
-    <form method="post" action="pages/components/logout.inc.php">
+    <form method="post" action="pages/components/login/logout.inc.php">
         <button type="submit">Log out</button>
     </form>
 </body>

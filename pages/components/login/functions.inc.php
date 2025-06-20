@@ -8,7 +8,7 @@
 // Datum		      : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 
-require_once 'class.php';
+require_once '../class.php';
 
 // Controleer of de verplichte velden bij registratie zijn ingevuld
 function emptyInputRegister($name, $email, $ww, $wwrepeat) {
@@ -48,7 +48,7 @@ function emailExists($conn, $email) {
     $sql = "SELECT * FROM user WHERE email = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "<script>window.location.href = '../register.php?error=stmtfailed';</script>";
+        echo "<script>window.location.href = '../../register.php?error=stmtfailed';</script>";
         exit();
     }
 
@@ -72,7 +72,7 @@ function createUser($conn, $naam, $email, $address, $ww, $rol) {
     $sql = "INSERT INTO user (name, email, address_id, password, rol_id) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "<script>window.location.href = '../register.php?error=stmtfailed';</script>";
+        echo "<script>window.location.href = '../../register.php?error=stmtfailed';</script>";
         exit();
     }
 
@@ -81,7 +81,7 @@ function createUser($conn, $naam, $email, $address, $ww, $rol) {
     mysqli_stmt_bind_param($stmt, "ssisi", $naam, $email, $address, $db_ww, $rol);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    echo "<script>window.location.href = '../login.php?error=none';</script>";
+    echo "<script>window.location.href = '../../login.php?error=none';</script>";
     exit();
 }
 
@@ -101,7 +101,7 @@ function loginUser($conn, $email, $ww) {
     $emailExists = emailExists($conn, $email);
 
     if ($emailExists === false) {
-        echo "<script>window.location.href = '../login.php?error=wrongLogin';</script>";
+        echo "<script>window.location.href = '../../login.php?error=wrongLogin';</script>";
         exit();
     }
 
@@ -114,7 +114,7 @@ function loginUser($conn, $email, $ww) {
     }
 
     if ($wwChecker === false) {
-        echo "<script>window.location.href = '../login.php?error=wrongLogin';</script>";
+        echo "<script>window.location.href = '../../login.php?error=wrongLogin';</script>";
         exit();
     } else if ($wwChecker === true) {
         // Start een sessie en sla de gebruiker op in de sessie
@@ -131,7 +131,7 @@ function loginUser($conn, $email, $ww) {
             $emailExists["rol_id"]      // role_id
         );
         $_SESSION['user'] = serialize($newUser);
-        echo "<script>window.location.href = '../../index.php?error=none';</script>";
+        echo "<script>window.location.href = '../../../index.php?error=none';</script>";
         exit();
     }
 }

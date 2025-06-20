@@ -51,7 +51,7 @@
   <a href="../index.php"><img class="register_arrow" alt="login-logo" src="../assets/images/arrow.svg" draggable="false" /></a>
   <img class="register_logo" alt="register-logo" src="../assets/images/electricity.svg" draggable="false" />
   <div class="register_div">
-    <form action="components/register.inc.php" method="POST">  
+    <form action="components/login/register.inc.php" method="POST">
 
       <input type="text" class="register_input" name="voornaam" placeholder="Voer uw naam in" required>
 
