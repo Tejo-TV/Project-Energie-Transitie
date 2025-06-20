@@ -46,7 +46,7 @@
   <img class="login_logo" alt="login-logo" src="../assets/images/electricity.svg" draggable="false" />
 
   <div class="login_div">
-    <form action="components/login.inc.php" method="POST">
+    <form action="components/login/login.inc.php" method="POST">
       <input type="email" name="email" placeholder="Voer uw e-mail in" required />
 
       <div class="passwd-wrap">
