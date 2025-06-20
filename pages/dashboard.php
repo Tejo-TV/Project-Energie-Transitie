@@ -1,3 +1,12 @@
+<?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		    : dashboard.php
+// Omschrijving		    : Op deze pagina staat het hele dashboard
+// Naam ontwikkelaar  : dominik
+// Project		        : Energie Transitie
+// Datum		          : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -9,18 +18,18 @@
 <body>
 <?php 
 // Voeg de header toe (logo, titel, evt. navigatie)
-include_once __DIR__ . '/components/header.php'; 
+include_once 'components/header.php'; 
 ?>
 <div class="dashboard-container">
     <!-- Hoofdgrid van het dashboard: grafiek, kalender, usage, kosten -->
     <div class="dashboard-main">
         <!-- Linksboven: grafiek met stroomverbruik (Chart.js) -->
         <div class="chart-section">
-            <?php include_once __DIR__ . '/components/chart.php'; ?>
+            <?php include_once 'components/chart.php'; ?>
         </div>
         <!-- Rechtsboven: kalender met energie-data -->
         <div class="calendar-section">
-            <?php include_once __DIR__ . '/components/calendar.php'; ?>
+            <?php include_once 'components/calendar.php'; ?>
         </div>
         <!-- Vue.js secties voor usage en kosten (linksonder en rechtsonder) -->
         <div id="vue-sections" style="display: contents;">
@@ -28,7 +37,7 @@ include_once __DIR__ . '/components/header.php';
             <div class="usage-section">
                 <button @click="showUsage = !showUsage">{{ showUsage ? 'Hide' : 'Show' }} Usage by device</button>
                 <div v-show="showUsage">
-                    <?php include_once __DIR__ . '/components/usage.php'; ?>
+                    <?php include_once 'components/usage.php'; ?>
                 </div>
             </div>
             <!-- Rechtsonder: energiekosten, met maand-selector -->

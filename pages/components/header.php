@@ -1,3 +1,12 @@
+<?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : cost.php
+// Omschrijving		  : Op deze pagina staat de cosheadert
+// Naam ontwikkelaar  : Tejo Veldman, dominik, mateo, tijs
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+?>
 <head>
 <!DOCTYPE html>
 <html lang="en">
