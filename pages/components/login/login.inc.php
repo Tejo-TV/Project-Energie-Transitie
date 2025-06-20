@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------------//
 // Naam script       : login.inc.php
 // Omschrijving      : Op deze pagina wordt de login verwerkt
-// Naam ontwikkelaar : Tejo Veldman, dominik
+// Naam ontwikkelaar : Tejo Veldman
 // Project           : Energie Transitie
 // Datum             : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//

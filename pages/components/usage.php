@@ -1,3 +1,12 @@
+<?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : cost.php
+// Omschrijving		  : Op deze pagina staat de usage
+// Naam ontwikkelaar  : dominik
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+?>
 <div class="usage-device">
     <h4>Usage by device</h4>
     <div class="usage-bar">
