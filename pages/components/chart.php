@@ -1,4 +1,12 @@
 <?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : chart.php
+// Omschrijving		  : Op deze pagina staat de chart
+// Naam ontwikkelaar  : dominik
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+
 // Laad het CSV-bestand met energie-data in
 $csvFile = __DIR__ . '../../../assets/data/energie.csv';
 $data = [];

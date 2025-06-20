@@ -2,8 +2,8 @@
 
 //---------------------------------------------------------------------------------------------------//
 // Naam script		  : functions.inc.php
-// Omschrijving		  : Op deze pagina taan alle functies voor de inc.php files
-// Naam ontwikkelaar  : Tejo Veldman, dominik
+// Omschrijving		  : Op deze pagina staan alle functies voor de inc.php files
+// Naam ontwikkelaar  : Tejo Veldman
 // Project		      : Energie Transitie
 // Datum		      : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
