@@ -39,6 +39,7 @@ if (isset($_SESSION['user'])){
     <title>Dashboard</title>
 </head>
 <body>
+    
     <form method="post" action="pages/components/logout.inc.php">
         <button type="submit">Log out</button>
     </form>
