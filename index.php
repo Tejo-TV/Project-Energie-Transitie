@@ -26,6 +26,14 @@ if (isset($_SESSION['user'])){
     $welcomeOverlay = "overlay";
 }
 
+//popup
+if(isset($_GET["error"])) {
+    if ($_GET["error"] == "wrongWay") {
+        echo "<div class='popup2'>
+          <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je bent al ingelogd! </p>
+          </div>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
