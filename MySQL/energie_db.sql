@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 19 jun 2025 om 10:38
+-- Gegenereerd op: 20 jun 2025 om 13:52
 -- Serverversie: 10.4.32-MariaDB
 -- PHP-versie: 8.2.12
 
@@ -76,7 +76,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `name`, `email`, `address_id`, `password`, `rol_id`) VALUES
-(4, 'Tester', 'test@gmail.com', '0', 'abb1277ab09e340e2811ca9ff9b64c56bc39f4c28e0f01df9169f558494002cf', 1);
+(1, 'Tester', 'test@gmail.com', '0', 'abb1277ab09e340e2811ca9ff9b64c56bc39f4c28e0f01df9169f558494002cf', 1);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -120,7 +120,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
