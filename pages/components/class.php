@@ -1,21 +1,22 @@
 <?php
 //---------------------------------------------------------------------------------------------------//
-// Naam script		  : class.php
-// Omschrijving		  : Op deze pagina heb je alle classes van de appelicatie.
-// Naam ontwikkelaar  : Tejo Veldman
-// Project		      : Energie Transitie
-// Datum		      : projectweek - periode 4 - 2025
+// Naam script       : class.php
+// Omschrijving      : Op deze pagina heb je alle classes van de applicatie.
+// Naam ontwikkelaar : Tejo Veldman
+// Project           : Energie Transitie
+// Datum             : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 
+// User class: bevat alle eigenschappen en methoden van een gebruiker
 class User {
-    // Properties
+    // Properties (eigenschappen van de gebruiker)
     private $id;
     private $name;
     private $email;
     private $address_id;
     private $role_id;
 
-    // Constructor
+    // Constructor: maakt een nieuwe gebruiker aan met alle eigenschappen
     public function __construct($id, $name, $email, $address_id, $role_id) {
         $this->id = $id;
         $this->name = $name;
@@ -24,7 +25,7 @@ class User {
         $this->role_id = $role_id;
     }
 
-    // Getters
+    // Getters: functies om de eigenschappen op te halen
     public function getId() {
         return $this->id;
     }
@@ -45,8 +46,5 @@ class User {
         return $this->role_id;
     }
 }
-
-
-
 
 ?>
