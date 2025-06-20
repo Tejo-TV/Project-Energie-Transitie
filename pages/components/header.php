@@ -14,7 +14,7 @@
         <input type="text" placeholder="Search">
     </div>
     <div class="header-links">
-        <a href="#">Login</a>
-        <a href="#">Settings</a>
+        <a href="pages/components/login.php"><button>Login</button></a>
+        <a href="#"><button>Settings</button></a>
     </div>
 </div> 
