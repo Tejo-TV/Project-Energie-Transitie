@@ -14,7 +14,8 @@
         <input type="text" placeholder="Search">
     </div>
     <div class="header-links">
-        <a href="#"><button class="header_logUit">Log uit</button></a>
+        <button onclick="logoutOverlay()" class="header_logUit">Log uit</button>
         <a href="#"><button class="header_settings">Settings</button></a>
     </div>
 </div> 
+<script src="assets/JS/script.js"></script>
