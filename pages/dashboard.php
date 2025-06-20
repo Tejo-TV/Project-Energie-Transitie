@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard Energie Transitie</title>
     <!-- Koppel de dashboard-specifieke CSS -->
-    <link rel="stylesheet" href="assets/CSS/dashboard.css">
+    <link rel="stylesheet" href="assets/CSS/style.css">
 </head>
 <body>
 <?php 

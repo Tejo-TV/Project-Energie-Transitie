@@ -1,3 +1,11 @@
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/CSS/dashboard.css">
+</head>
+
 <div class="header">
     <div class="logo">
         <img src="/assets/images/electricity.svg" alt="Logo" />
