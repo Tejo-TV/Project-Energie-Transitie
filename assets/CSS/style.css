@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
 /* ---------------------
     popup styes 
 --------------------- */   
@@ -210,11 +215,10 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Dashboard specifieke styling */
-body {
-    background: #f4f4f4; /* Lichte grijze achtergrond zoals in de mock-up */
-    font-family: Arial, sans-serif;
-}
+/* ---------------------
+    dashboard style 
+--------------------- */ 
+
 .dashboard-container {
     width: 100vw;
     min-height: 100vh;
@@ -224,17 +228,20 @@ body {
     border-radius: 0;
     box-shadow: none;
 }
+
 .dashboard-header {
-    background: #b7e3e3; /* Mintkleurige header */
+    background: #b7e3e3;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 30px;
     border-radius: 0;
 }
+
 .dashboard-header img {
     height: 48px;
 }
+
 .dashboard-header h2 {
     margin: 0;
     font-size: 1.5em;
@@ -242,10 +249,12 @@ body {
     flex: 1;
     text-align: center;
 }
+
 .dashboard-header .header-actions {
     display: flex;
     gap: 20px;
 }
+
 .dashboard-main {
     display: grid;
     grid-template-columns: 2fr 1.1fr;
@@ -255,6 +264,7 @@ body {
     width: 100vw;
     box-sizing: border-box;
 }
+
 .chart-section {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -266,6 +276,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .calendar-section {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
@@ -276,6 +287,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .usage-section {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -284,6 +296,7 @@ body {
     padding: 18px 24px;
     min-height: 120px;
 }
+
 .cost-section {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -295,16 +308,19 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .chart-placeholder {
     height: 120px;
     background: #b2d8d8;
     border-radius: 10px;
 }
+
 .usage-bar {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
+
 .usage-bar .bar {
     height: 15px;
     background: #a2e3c4;
@@ -312,17 +328,20 @@ body {
     margin-left: 10px;
     min-width: 50px;
 }
+
 .energy-cost {
     text-align: center;
 }
+
 .cost-value {
     font-size: 2em;
     margin-top: 10px;
 }
-.calendar-widget {}
+
 .calendar-tabs {
     margin-bottom: 8px;
 }
+
 .calendar-tabs button {
     margin-right: 5px;
     background: #fff;
@@ -333,14 +352,17 @@ body {
     font-weight: 500;
     cursor: pointer;
 }
+
 .calendar-tabs button.active, .calendar-tabs button:hover {
     background: #b7e3e3;
 }
+
 .calendar-table table {
     width: 100%;
     border-collapse: collapse;
     background: transparent;
 }
+
 .calendar-table th, .calendar-table td {
     padding: 3px;
     text-align: center;
