@@ -375,7 +375,7 @@ body {
 
 .none_overlay {
   position: fixed;
-  inset: 0; /* hetzelfde als top: 0; left: 0; right: 0; bottom: 0 */
+  inset: 0; 
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.4);
   display: none;
@@ -389,7 +389,7 @@ body {
 
 .overlay {
   position: fixed;
-  inset: 0; /* hetzelfde als top: 0; left: 0; right: 0; bottom: 0 */
+  inset: 0; 
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
@@ -479,14 +479,35 @@ body {
     align-items: center;
     gap: 18px;
 }
-.header-links a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background 0.2s;
+
+
+.header_logUit {
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff1313;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-.header-links a:hover {
-    background: #eaf6f7;
-} 
+
+.header_logUit:hover {
+    background-color: #fb6363;
+}
+
+.header_settings {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header_settings:hover {
+    background-color: #0056b3;
+}
