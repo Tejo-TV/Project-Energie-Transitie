@@ -58,14 +58,8 @@ include __DIR__ . '/components/header.php';
 const { createApp } = Vue;
 createApp({
   data() {
-    return {
-      greeting: (function() {
-        const hour = new Date().getHours();
-        if (hour < 12) return 'Goedemorgen! Stroomverbruik woning';
-        if (hour < 18) return 'Goedemiddag! Stroomverbruik woning';
-        return 'Goedenavond! Stroomverbruik woning';
-      })()
-    }
+
+    
   }
 }).mount('#greeting-app');
 // Vue-app voor usage/cost-secties (show/hide usage, maand-selectie voor kosten)

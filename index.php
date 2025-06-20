@@ -9,6 +9,7 @@
 //---------------------------------------------------------------------------------------------------//
 session_start();
 require_once 'pages/components/class.php';
+include 'pages/dashboard.php';
 
 // Volgende code haalt alle user informatie uit een class
 if (isset($_SESSION['user'])){
@@ -29,7 +30,6 @@ if (isset($_SESSION['user'])){
     echo "no user found";
 }
 
-include 'pages/dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
