@@ -15,3 +15,9 @@
   function cancelsettingsOverlay() {
     document.getElementById("settingsOverlay").style.display = "none";
   }
+
+  function addressHighlightRemove() {
+    document.getElementById("removeHighlight").style.backgroundColor = "transparent";
+    document.getElementById("removeHighlight").style.padding = "0px";
+  }
+
