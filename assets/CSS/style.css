@@ -111,6 +111,82 @@ body {
   }
 }
 
+/* ---------------------
+    header style
+--------------------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: #b7e3e3;
+    min-height: 70px;
+    position: relative;
+}
+.logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 48px;
+}
+.search-bar {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar input[type="text"] {
+    width: 320px;
+    max-width: 100%;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #a2e3c4;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.header-links {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.header_logUit {
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff1313;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header_logUit:hover {
+    background-color: #fb6363;
+}
+
+.header_settings {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header_settings:hover {
+    background-color: #0056b3;
+}
+
 
 /* ---------------------
     login page 
@@ -610,82 +686,4 @@ body {
 
 .btn:hover {
   background-color: #0056b3;
-}
-
-
-
-/* ---------------------
-    header style
---------------------- */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 32px;
-    background: #b7e3e3;
-    min-height: 70px;
-    position: relative;
-}
-.logo {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-}
-.logo img {
-    height: 48px;
-}
-.search-bar {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.search-bar input[type="text"] {
-    width: 320px;
-    max-width: 100%;
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 1px solid #a2e3c4;
-    font-size: 1em;
-    outline: none;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.header-links {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-
-.header_logUit {
-    padding: 12px 24px;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #ff1313;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.header_logUit:hover {
-    background-color: #fb6363;
-}
-
-.header_settings {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.header_settings:hover {
-    background-color: #0056b3;
 }

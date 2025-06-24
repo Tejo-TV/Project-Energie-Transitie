@@ -43,6 +43,10 @@ if (isset($_SESSION['user'])){
     echo "<div class='popup'>
           <p> ✅ Succesvol uitgelogd!</p>
           </div>";
+  } else if ($_GET["error"] == "unknownError") {
+        echo "<div class='popup2'>
+              <p> 🛠️ Oeps! Er ging iets fout. Rapporteer de foutmelding. </p>
+              </div>";
   }
 }
 

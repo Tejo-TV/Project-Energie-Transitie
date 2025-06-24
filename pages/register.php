@@ -43,6 +43,10 @@
         echo "<div class='popup2'>
               <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je hebt geen toegang. </p>
               </div>";
+      } else if ($_GET["error"] == "unknownError") {
+        echo "<div class='popup2'>
+              <p> 🛠️ Oeps! Er ging iets fout. Rapporteer de foutmelding. </p>
+              </div>";
       }
     }
   

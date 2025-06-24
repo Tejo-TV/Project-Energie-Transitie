@@ -1,18 +1,18 @@
 <?php
 
 //---------------------------------------------------------------------------------------------------//
-// Naam script		  : index.php
-// Omschrijving		  : Homepage van het project
-// Naam ontwikkelaar  : 
-// Project		      : Energie Transitie
-// Datum		      : projectweek - periode 4 - 2025
+// Naam script		    : index.php
+// Omschrijving		    : Homepage van het project
+// Naam ontwikkelaar  : Tejo Veldman, dominik, Mateo, Tijs
+// Project		        : Energie Transitie
+// Datum		          : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 session_start();
 require_once 'pages/components/class.php';
 include_once 'pages/dashboard.php';
 
-// Volgende code haalt alle user informatie uit een class
 if (isset($_SESSION['user'])){
+  // Volgende code haalt alle user informatie uit een class
     $storedUser = unserialize($_SESSION['user']);
     $userID = $storedUser->getId();
     $userName = $storedUser->getName();
@@ -20,15 +20,20 @@ if (isset($_SESSION['user'])){
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
 
-    $welcomeOverlay = "none_overlay";
-    if ($userAddressId == 0){
-        echo "<div class='popup3'>
-          <p> ⚠️ Ik zie dat je <strong>geen</strong> adres hebt gekoppelt! </p> <button onclick='settingsOverlay()'>Vul nu in!</button>
-          </div>";
-          $HighlightRemove = false;
-    } else {
-      $HighlightRemove = true;
-    }
+  if($userRol == 2){
+    echo "<script>window.location.href = 'pages/admin-panel.php?error=none';</script>";
+    exit();
+  }
+
+  $welcomeOverlay = "none_overlay";
+  if ($userAddressId == 0){
+      echo "<div class='popup3'>
+        <p> ⚠️ Ik zie dat je <strong>geen</strong> adres hebt gekoppelt! </p> <button onclick='settingsOverlay()'>Vul nu in!</button>
+        </div>";
+        $HighlightRemove = false;
+  } else {
+    $HighlightRemove = true;
+  }
 
 } else {
     $welcomeOverlay = "overlay";
@@ -40,6 +45,14 @@ if(isset($_GET["error"])) {
         echo "<div class='popup2'>
           <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je bent al ingelogd! </p>
           </div>";
+    } else if ($_GET["error"] == "wrongWayAdmin") {
+        echo "<div class='popup2'>
+          <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je hebt geen toegang. </p>
+          </div>";
+    } else if ($_GET["error"] == "unknownError") {
+        echo "<div class='popup2'>
+              <p> 🛠️ Oeps! Er ging iets fout. Rapporteer de foutmelding. </p>
+              </div>";
     }
 }
 ?>
