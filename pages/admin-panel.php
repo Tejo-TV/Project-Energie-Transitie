@@ -17,7 +17,7 @@
     $userName = $storedUser->getName();
     $userEmail = $storedUser->getEmail();
     $userAddressId = $storedUser->getAddressId();
-    $userRol = 2;
+    $userRol = $storedUser->getRoleId();
 
   if($userRol == 2){
     // exit();
