@@ -12,11 +12,9 @@ body {
     popup styes 
 --------------------- */   
 .popup,
-.popup2 {
+.popup2,
+.popup3 {
   position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -25,21 +23,57 @@ body {
   z-index: 1000;
   display: block; 
   opacity: 0;
-  animation: popup-fade-in 7s forwards;
+}
+
+.popup,
+.popup2 {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popup3 {
+  bottom: 10px;
+  right: 10px;
+  transform: none;
+  background-color: #efa51d;
+  color: white;
+  animation: popup3-fade-in-out 7s forwards;
+}
+
+.popup3 button {
+  margin-top: 10px;
+  background-color: #fcc867;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.popup3 button:hover {
+  background-color: #ffb834;
+  transform: scale(1.05);
 }
 
 .popup {
   background-color: #4CAF50;
   color: white;
+  animation: popup-fade-in-out 7s forwards;
 }
 
 .popup2 {
   background-color: #fa2121;
   color: white;
   cursor: not-allowed;
+  animation: popup-fade-in-out 7s forwards;
 }
 
-@keyframes popup-fade-in {
+@keyframes popup-fade-in-out {
   0% {
     opacity: 0;
     top: 0;
@@ -57,6 +91,26 @@ body {
     top: 0;
   }
 }
+
+@keyframes popup3-fade-in-out {
+  0% {
+    opacity: 0;
+    bottom: 0;
+  }
+  10% {
+    opacity: 1;
+    bottom: 20px;
+  }
+  70% {
+    opacity: 1;
+    bottom: 20px;
+  }
+  100% {
+    display: none;
+    bottom: 0;
+  }
+}
+
 
 /* ---------------------
     login page 
@@ -373,6 +427,7 @@ body {
     dashboard login overlay
 --------------------- */
 
+/* overlay wanneer niet ingelogd */
 .none_overlay {
   position: fixed;
   inset: 0; 
@@ -432,9 +487,132 @@ body {
     transition: background-color 0.3s;
 }
 
-.popup button:hover {
+.overlay_popup button:hover {
     background-color: #0056b3;
 }
+
+/* overlay wanneer je wilt uitloggen */
+.logout_overlay {
+  position: fixed;
+  inset: 0; 
+  backdrop-filter: blur(2px);
+  background-color: rgba(189, 189, 189, 0.4);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.logout_overlay a button{
+    background-color: #00fffb;
+}
+
+.logout_overlay button{
+    background-color: #fa2121;
+}
+
+/* overlay voor de settings */
+.settings_overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.settings_popup {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 500px;
+}
+
+.settings_popup h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.settings_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form_label {
+  font-weight: bold;
+  color: #444;
+}
+
+.form_input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form_input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+.form_row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.form_group {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.adresForm_alert {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.settings_buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
 
 /* ---------------------
     header style

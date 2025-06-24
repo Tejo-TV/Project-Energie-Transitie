@@ -1,3 +1,13 @@
+<?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : calendar.php
+// Omschrijving		  : Op deze pagina staat de calender
+// Naam ontwikkelaar  : dominik
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+?>
+
 <div class="calendar-widget">
     <div class="calendar-tabs">
         <button>Day</button>
