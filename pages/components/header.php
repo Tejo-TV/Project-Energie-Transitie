@@ -1,13 +1,12 @@
 <?php
 //---------------------------------------------------------------------------------------------------//
-// Naam script		  : cost.php
-// Omschrijving		  : Op deze pagina staat de cosheadert
-// Naam ontwikkelaar  : Tejo Veldman, dominik, mateo, tijs
+// Naam script		  : header.php
+// Omschrijving		  : Op deze pagina staat de header van de deshboard
+// Naam ontwikkelaar  : Tejo Veldman, dominik, tijs
 // Project		      : Energie Transitie
 // Datum		      : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 ?>
-<head>
 <!DOCTYPE html>
 <html lang="en">
 <head>

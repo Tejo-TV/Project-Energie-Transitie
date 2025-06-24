@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin panel</title>
-    <link rel="stylesheet" href="../assets/CSS/style.css">
-</head>
-<body>
-  <?php 
+<?php
+//---------------------------------------------------------------------------------------------------//
+// Naam script		    : index.php
+// Omschrijving		    : Homepage van het project
+// Naam ontwikkelaar  : Tejo Veldman, dominik, Mateo, Tijs
+// Project		        : Energie Transitie
+// Datum		          : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
+
   session_start();
   require_once 'components/class.php';
   // Voeg de admin-header toe (logo, titel, evt. navigatie)
@@ -20,7 +19,7 @@
     $userName = $storedUser->getName();
     $userEmail = $storedUser->getEmail();
     $userAddressId = $storedUser->getAddressId();
-    $userRol = $storedUser->getRoleId();
+    $userRol = 2;
 
   if($userRol == 2){
     exit();
@@ -44,7 +43,19 @@ if(isset($_GET["error"])) {
               </div>";
     }
 }
-    ?>
 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+<p class="admin-welkom">Welkom admin: <?php echo $userName; ?></p>
 </body>
+<script src="../assets/JS/script.js"></script>
 </html>
