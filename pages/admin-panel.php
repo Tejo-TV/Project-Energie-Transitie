@@ -8,9 +8,7 @@
 //---------------------------------------------------------------------------------------------------//
 
   session_start();
-  require_once 'components/class.php';
-  // Voeg de admin-header toe (logo, titel, evt. navigatie)
-  include_once 'components/admin-header.php'; 
+  require_once 'components/class.php'; 
 
   if (isset($_SESSION['user'])){
     // Volgende code haalt alle user informatie uit een class
@@ -22,7 +20,7 @@
     $userRol = 2;
 
   if($userRol == 2){
-    exit();
+    // exit();
   } else if($userRol == 3){
     echo "<script>window.location.href = '../index.php?error=unknownError';</script>";
     exit();
@@ -54,8 +52,41 @@ if(isset($_GET["error"])) {
     <title>Admin panel</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
+<div class="header">
+    <div class="logo">
+        <img src="../assets/images/electricity.svg" alt="Logo" draggable="false" />
+    </div>
+    <div class="header-links">
+        <button onclick="logoutOverlay()" class="header_logUit">Log uit</button>
+    </div>
+</div> 
 <body>
-<p class="admin-welkom">Welkom admin: <?php echo $userName; ?></p>
+    <div class="admin-welkom">
+        <p>Welkom admin: <?php echo $userName; ?></p>
+    </div>
+    <div class="panel-grid">
+        <div class="panel-field1">
+          <h1>Users</h1>
+        </div>
+        <div class="panel-field2">
+          <h1>Data</h1>
+        </div>
+        <div class="panel-field3">
+          <h1>Website data</h1>
+        </div>
+    </div>
+
+
+
+<!-- Overlay voor als je wilt uitloggen -->
+     <div class="logout_overlay" id="logoutOverlay">
+        <div class="overlay_popup">
+        <h2>Weet je zeker dat je wilt uitloggen?</h2>
+        <a href="components/login/logout.inc.php"><button>Log uit</button></a>
+        <button onclick="cancelLogoutOverlay()">Annuleren</button>
+    </div>
+</div>
+
 </body>
 <script src="../assets/JS/script.js"></script>
 </html>

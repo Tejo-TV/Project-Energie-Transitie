@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #f4f4f4;
+    background-color: #ffffff;
     font-family: Arial, sans-serif;
 }
 
@@ -691,3 +691,50 @@ body {
 /* ---------------------
     admin panel
 --------------------- */
+
+.admin-welkom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaf6f7;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.admin-welkom p {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.panel-grid {
+  display: flex;
+  height: calc(100vh - 242px);
+  padding: 10px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.panel-field1 {
+  background-color: #eaf6f7;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.right-panels {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.panel-field2,
+.panel-field3 {
+  background-color: #eaf6f7;
+  flex: 1;
+  border-radius: 10px;
+}
+
+
+
+/* height: calc(100vh - 242px); */
