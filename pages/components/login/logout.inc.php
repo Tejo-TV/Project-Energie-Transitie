@@ -1,11 +1,16 @@
+
 <?php
-// Start de sessie zodat we deze kunnen beëindigen voor uitloggen
+//---------------------------------------------------------------------------------------------------//
+// Naam script		  : logout.inc.php
+// Omschrijving		  : Op deze pagina wordt de user uitgelogd
+// Naam ontwikkelaar  : Tejo Veldman
+// Project		      : Energie Transitie
+// Datum		      : projectweek - periode 4 - 2025
+//---------------------------------------------------------------------------------------------------//
 session_start();
-// Verwijder alle sessie-variabelen (gebruiker wordt uitgelogd)
 session_unset();
-// Vernietig de sessie helemaal
 session_destroy();
 
-// Stuur de gebruiker terug naar de loginpagina met een melding
+// Stuur de gebruiker terug naar de loginpagina met de uilog melding
 header("Location: ../../login.php?error=uitgelogd");
 exit();

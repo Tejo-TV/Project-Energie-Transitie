@@ -21,12 +21,20 @@ if (isset($_SESSION['user'])){
     $userRol = $storedUser->getRoleId();
 
     $welcomeOverlay = "none_overlay";
+    if ($userAddressId == 0){
+        echo "<div class='popup3'>
+          <p> ⚠️ Ik zie dat je <strong>geen</strong> adres hebt gekoppelt! </p> <button onclick='settingsOverlay()'>Vul nu in!</button>
+          </div>";
+          $HighlightRemove = false;
+    } else {
+      $HighlightRemove = true;
+    }
 
 } else {
     $welcomeOverlay = "overlay";
 }
 
-//popup
+// popup wanneer iemand al is ingelogd en naar de inlog pagina gaat
 if(isset($_GET["error"])) {
     if ($_GET["error"] == "wrongWay") {
         echo "<div class='popup2'>
@@ -59,10 +67,69 @@ if(isset($_GET["error"])) {
          <div class="logout_overlay" id="logoutOverlay">
             <div class="overlay_popup">
             <h2>Weet je zeker dat je wilt uitloggen?</h2>
-            <a href="pages/components/login/logout.inc.php"><button>Logout</button></a>
+            <a href="pages/components/login/logout.inc.php"><button>Log uit</button></a>
             <button onclick="cancelLogoutOverlay()">Annuleren</button>
         </div>
     </div>
+
+    <!-- Overlay voor als je je settings wilt bewerken/bekijken  -->
+<div class="settings_overlay" id="settingsOverlay">
+  <div class="settings_popup">
+    <h2>Instellingen aanpassen</h2>
+    <form class="settings_form">
+
+      <label class="form_label">Naam</label>
+      <input type="text" class="form_input" placeholder="Nieuwe gebruikersnaam">
+
+      <label class="form_label">E-mailadres</label>
+      <input type="email" class="form_input" placeholder="Nieuw e-mailadres">
+
+      <div class="adresForm_alert" id="removeHighlight">
+      <div class="form_row">
+        <div class="form_group">
+          <label class="form_label">Straat</label>
+          <input type="text" class="form_input" placeholder="Bijv. Langestraat">
+        </div>
+        <div class="form_group">
+          <label class="form_label">Huisnummer</label>
+          <input type="text" class="form_input" placeholder="12A">
+        </div>
+      </div>
+
+      <label class="form_label">Postcode</label>
+      <input type="text" class="form_input" placeholder="1234 AB">
+
+      <label class="form_label">Stad</label>
+      <input type="text" class="form_input" placeholder="Bijv. Utrecht">
+
+      <label class="form_label">Land</label>
+      <select class="form_input">
+        <option value="">-- Kies een land --</option>
+        <option value="NL">Nederland</option>
+        <option value="BE">België</option>
+        <option value="DE">Duitsland</option>
+        <option value="FR">Frankrijk</option>
+        <option value="UK">Verenigd Koninkrijk</option>
+      </select>
+      </div>
+      <!-- verwijdert de highlight als het adres is ingevuld -->
+
+      <?php 
+       if($HighlightRemove == true){
+        echo '<script>addressHighlightRemove();</script>';
+       }      
+      ?>
+
+      <div class="settings_buttons">
+        <button type="submit" class="btn">Opslaan</button>
+        <button type="button" class="btn" onclick="cancelsettingsOverlay()">Annuleren</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
 </body>
 <script src="assets/JS/script.js"></script>
 </html>
