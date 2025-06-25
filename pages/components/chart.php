@@ -10,68 +10,111 @@
 // Laad het CSV-bestand met energie-data in
 $csvFile = __DIR__ . '../../../assets/data/energie.csv';
 $data = [];
-// Open het CSV-bestand en lees de data uit
+$columns = [];
 if (($handle = fopen($csvFile, 'r')) !== false) {
-    // Lees de eerste regel (header) om kolomnamen te krijgen
     $header = fgetcsv($handle, 0, ';');
-    // Zoek de indexen van de kolommen die we willen gebruiken
     $tijdIndex = array_search('Tijdstip', $header);
-    $verbruikIndex = array_search('Stroomverbruik woning (kW)', $header);
-    // Loop door alle rijen van het CSV-bestand
-    while (($row = fgetcsv($handle, 0, ';')) !== false) {
+    // Verzamel alle kolomnamen behalve Tijdstip
+    foreach ($header as $i => $col) {
+        if ($i !== $tijdIndex) {
+            $columns[$col] = $i;
+        }
+    }
+    // Initialiseer arrays voor elke kolom
+    $series = [];
+    foreach ($columns as $col => $i) {
+        $series[$col] = [];
+    }
+    $tijden = [];
+    $rowCount = 0;
+    while (($row = fgetcsv($handle, 0, ';')) !== false && $rowCount < 24) {
         $tijd = $row[$tijdIndex];
-        $verbruikRaw = $row[$verbruikIndex] ?? '';
-        // Zet komma's om naar punten voor getallen
-        $verbruik = str_replace(',', '.', $verbruikRaw);
-        // Voeg alleen geldige data toe aan de array
-        if ($tijd && is_numeric($verbruik)) {
-            $data[] = [
-                'tijd' => $tijd,
-                'verbruik' => (float)$verbruik
-            ];
+        if ($tijd) {
+            $tijden[] = $tijd;
+            foreach ($columns as $col => $i) {
+                $raw = $row[$i] ?? '';
+                $val = str_replace(',', '.', $raw);
+                $series[$col][] = is_numeric($val) ? (float)$val : null;
+            }
+            $rowCount++;
         }
     }
     fclose($handle);
 }
-// Zet de tijdstippen en verbruiken in aparte arrays voor de grafiek
-$tijden = array_column($data, 'tijd');
-$verbruiken = array_column($data, 'verbruik');
-// Optioneel: alleen de eerste 24 punten tonen (voor overzicht)
-$tijden = array_slice($tijden, 0, 24);
-$verbruiken = array_slice($verbruiken, 0, 24);
 ?>
-<!-- Canvas voor de Chart.js grafiek -->
+<!-- Chart select dropdown -->
+<div class="chart-select-container">
+    <label for="chart-select">Kies dataset:</label>
+    <select id="chart-select"></select>
+    <span id="chart-title"></span>
+</div>
 <canvas id="verbruikChart" width="600" height="250"></canvas>
-<!-- Laad Chart.js via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Zet de PHP-arrays om naar JavaScript-arrays voor de grafiek
 const labels = <?php echo json_encode($tijden); ?>;
-const data = <?php echo json_encode($verbruiken); ?>;
-// Haal de canvas-context op en maak de grafiek aan
+const datasets = <?php echo json_encode($series); ?>;
+const datasetNames = Object.keys(datasets);
+let currentIndex = 0;
+const colors = [
+    '#4bc0c0', '#ff6384', '#36a2eb', '#ffcd56', '#9966ff', '#ff9f40', '#c9cbcf'
+];
 const ctx = document.getElementById('verbruikChart').getContext('2d');
-new Chart(ctx, {
-    type: 'line', // Lijngrafiek
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Stroomverbruik woning (kW)', // Titel van de dataset
-            data: data, // De waardes van het verbruik
-            borderColor: '#4bc0c0', // Lijnkleur
-            backgroundColor: 'rgba(75,192,192,0.2)', // Opvulkleur
-            fill: true,
-            tension: 0.3 // Maakt de lijn wat vloeiender
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: true } // Toon de legenda
-        },
-        scales: {
-            x: { display: false }, // Verberg de x-as labels
-            y: { beginAtZero: true } // Laat y-as bij 0 beginnen
-        }
-    }
+let chart;
+
+// Populate the select list
+const select = document.getElementById('chart-select');
+datasetNames.forEach((name, idx) => {
+    const option = document.createElement('option');
+    option.value = idx;
+    option.textContent = name;
+    select.appendChild(option);
 });
+
+function renderChart(idx) {
+    const name = datasetNames[idx];
+    const data = datasets[name];
+    document.getElementById('chart-title').textContent = name;
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: name,
+                data: data,
+                borderColor: colors[idx % colors.length],
+                backgroundColor: 'rgba(75,192,192,0.2)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: true } },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Datum/tijd',
+                        color: '#222',
+                        font: { weight: 'bold', size: 14 }
+                    },
+                    ticks: {
+                        color: '#222',
+                        font: { size: 12 }
+                    }
+                },
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+
+select.onchange = function() {
+    currentIndex = parseInt(this.value);
+    renderChart(currentIndex);
+};
+// Initial render
+renderChart(currentIndex);
 </script> 
