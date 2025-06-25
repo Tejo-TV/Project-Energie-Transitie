@@ -26,6 +26,7 @@ if ($userAddressId == 0) {
     $userAddressHuisnummer = "";
     $userAddressPostcode = "";
     $userAddressStad = "";
+    $userAddressLand = "NONE";
   } else {
     $sql = "SELECT * FROM address WHERE ID = '$userAddressId';";
     $result = mysqli_query($conn, $sql);
@@ -43,6 +44,7 @@ if ($userAddressId == 0) {
       $userAddressHuisnummer = "";
       $userAddressPostcode = "";
       $userAddressStad = "";
+      $userAddressLand = "NONE";
     }
   }
 
@@ -94,14 +96,14 @@ if (isset($_POST["updateSettings"])) {
     // Update user info
     $queryUser = mysqli_query($conn, "UPDATE user SET name = '$naam', email = '$email' WHERE ID = '$userID'");
     if (!$queryUser) {
-        echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+        echo "<script>window.location.href = 'index.php?error=oplaanError';</script>";
         exit();
     }
 
     // Check of user al een adres heeft
     $addressIdQuery = mysqli_query($conn, "SELECT address_id FROM user WHERE ID = '$userID'");
     if (!$addressIdQuery) {
-        echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+        echo "<script>window.location.href = 'index.php?error=oplaanError';</script>";
         exit();
     }
 
@@ -112,26 +114,26 @@ if (isset($_POST["updateSettings"])) {
         // Voeg nieuw adres toe
         $insertAddress = mysqli_query($conn, "INSERT INTO address (street, number, postcode, city, country) VALUES ('$straat', '$huisnr', '$postcode', '$stad', '$land')");
         if (!$insertAddress) {
-            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            echo "<script>window.location.href = 'index.php?error=oplaanError';</script>";
             exit();
         }
         $newAddressId = mysqli_insert_id($conn);
         // Update user met nieuw adres ID
         $updateUserAddress = mysqli_query($conn, "UPDATE user SET address_id = '$newAddressId' WHERE ID = '$userID'");
         if (!$updateUserAddress) {
-            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            echo "<script>window.location.href = 'index.php?error=oplaanError';</script>";
             exit();
         }
     } else {
         // Update bestaand adres
         $updateAddress = mysqli_query($conn, "UPDATE address SET street = '$straat', number = '$huisnr', postcode = '$postcode', city = '$stad', country = '$land' WHERE ID = '$addressId'");
         if (!$updateAddress) {
-            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            echo "<script>window.location.href = 'index.php?error=oplaanError';</script>";
             exit();
         }
     }
 
-    // Alles gelukt, redirect naar accountpagina (of waar je wilt)
+    // Alles gelukt, toon een popup
     echo "<script>window.location.href = 'index.php?error=opgeslagen';</script>";
     exit();
 }
@@ -198,6 +200,7 @@ if (isset($_POST["updateSettings"])) {
 
       <label class="form_label">Land</label>
       <select class="form_input" name="settingsLand"  required>
+        <option value="" <?= $userAddressLand == "NONE" ? "selected" : "" ?>>-- Selecteer een land --</option>
         <option value="NL" <?= $userAddressLand == "NL" ? "selected" : "" ?>>Nederland</option>
         <option value="BE" <?= $userAddressLand == "BE" ? "selected" : "" ?>>België</option>
         <option value="DE" <?= $userAddressLand == "DE" ? "selected" : "" ?>>Duitsland</option>
