@@ -10,6 +10,7 @@
 session_start();
 require_once 'pages/components/class.php';
 include_once 'pages/dashboard.php';
+require_once 'config/DB_connect.php';
 
 if (isset($_SESSION['user'])){
   // Volgende code haalt alle user informatie uit een class
@@ -19,6 +20,31 @@ if (isset($_SESSION['user'])){
     $userEmail = $storedUser->getEmail();
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
+
+if ($userAddressId == 0) {
+    $userAddressStraat = "";
+    $userAddressHuisnummer = "";
+    $userAddressPostcode = "";
+    $userAddressStad = "";
+  } else {
+    $sql = "SELECT * FROM address WHERE ID = '$userAddressId';";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $userAddressStraat = $row['street'];
+      $userAddressHuisnummer = $row['number'];
+      $userAddressPostcode = $row['postcode'];
+      $userAddressStad = $row['city'];
+      $userAddressLand = $row['country'];
+    } else {
+      // Als het adres niet bestaat, zet alles leeg
+      $userAddressStraat = "";
+      $userAddressHuisnummer = "";
+      $userAddressPostcode = "";
+      $userAddressStad = "";
+    }
+  }
 
   if($userRol == 2){
     echo "<script>window.location.href = 'pages/admin-panel.php?error=none';</script>";
@@ -55,6 +81,60 @@ if(isset($_GET["error"])) {
               </div>";
     }
 }
+
+if (isset($_POST["updateSettings"])) {
+    $naam = $_POST['settingsNaam'];
+    $email = $_POST['settingsEmail'];
+    $straat = $_POST['settingsStraat'];
+    $huisnr = $_POST['settingsHuisnummer'];
+    $postcode = $_POST['settingsPostcode'];
+    $stad = $_POST['settingsStad'];
+    $land = $_POST['settingsLand'];
+
+    // Update user info
+    $queryUser = mysqli_query($conn, "UPDATE user SET name = '$naam', email = '$email' WHERE ID = '$userID'");
+    if (!$queryUser) {
+        echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+        exit();
+    }
+
+    // Check of user al een adres heeft
+    $addressIdQuery = mysqli_query($conn, "SELECT address_id FROM user WHERE ID = '$userID'");
+    if (!$addressIdQuery) {
+        echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+        exit();
+    }
+
+    $addressRow = mysqli_fetch_assoc($addressIdQuery);
+    $addressId = $addressRow['address_id'];
+
+    if (empty($addressId) || $addressId == 0) {
+        // Voeg nieuw adres toe
+        $insertAddress = mysqli_query($conn, "INSERT INTO address (street, number, postcode, city, country) VALUES ('$straat', '$huisnr', '$postcode', '$stad', '$land')");
+        if (!$insertAddress) {
+            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            exit();
+        }
+        $newAddressId = mysqli_insert_id($conn);
+        // Update user met nieuw adres ID
+        $updateUserAddress = mysqli_query($conn, "UPDATE user SET address_id = '$newAddressId' WHERE ID = '$userID'");
+        if (!$updateUserAddress) {
+            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            exit();
+        }
+    } else {
+        // Update bestaand adres
+        $updateAddress = mysqli_query($conn, "UPDATE address SET street = '$straat', number = '$huisnr', postcode = '$postcode', city = '$stad', country = '$land' WHERE ID = '$addressId'");
+        if (!$updateAddress) {
+            echo "<script>window.location.href = 'index.php?error=Oplaan error';</script>";
+            exit();
+        }
+    }
+
+    // Alles gelukt, redirect naar accountpagina (of waar je wilt)
+    echo "<script>window.location.href = 'index.php?error=opgeslagen';</script>";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -90,40 +170,39 @@ if(isset($_GET["error"])) {
 <div class="settings_overlay" id="settingsOverlay">
   <div class="settings_popup">
     <h2>Instellingen aanpassen</h2>
-    <form class="settings_form">
+    <form class="settings_form" method="POST">
 
       <label class="form_label">Naam</label>
-      <input type="text" class="form_input" placeholder="Nieuwe gebruikersnaam">
+      <input type="text" class="form_input" name="settingsNaam" placeholder="Nieuwe gebruikersnaam" value="<?php echo $userName; ?>"required>
 
       <label class="form_label">E-mailadres</label>
-      <input type="email" class="form_input" placeholder="Nieuw e-mailadres">
+      <input type="email" class="form_input" name="settingsEmail" placeholder="Nieuw e-mailadres" value="<?php echo $userEmail; ?>" required>
 
       <div class="adresForm_alert" id="removeHighlight">
       <div class="form_row">
         <div class="form_group">
           <label class="form_label">Straat</label>
-          <input type="text" class="form_input" placeholder="Bijv. Langestraat">
+          <input type="text" class="form_input" name="settingsStraat" placeholder="Bijv. Langestraat" value="<?php echo $userAddressStraat; ?>" required>
         </div>
         <div class="form_group">
           <label class="form_label">Huisnummer</label>
-          <input type="text" class="form_input" placeholder="12A">
+          <input type="text" class="form_input" name="settingsHuisnummer" placeholder="12A" value="<?php echo $userAddressHuisnummer; ?>" required>
         </div>
       </div>
 
       <label class="form_label">Postcode</label>
-      <input type="text" class="form_input" placeholder="1234 AB">
+      <input type="text" class="form_input" name="settingsPostcode" placeholder="1234 AB" value="<?php echo $userAddressPostcode; ?>" required>
 
       <label class="form_label">Stad</label>
-      <input type="text" class="form_input" placeholder="Bijv. Utrecht">
+      <input type="text" class="form_input" name="settingsStad" placeholder="Bijv. Utrecht" value="<?php echo $userAddressStad; ?>" required>
 
       <label class="form_label">Land</label>
-      <select class="form_input">
-        <option value="">-- Kies een land --</option>
-        <option value="NL">Nederland</option>
-        <option value="BE">België</option>
-        <option value="DE">Duitsland</option>
-        <option value="FR">Frankrijk</option>
-        <option value="UK">Verenigd Koninkrijk</option>
+      <select class="form_input" name="settingsLand"  required>
+        <option value="NL" <?= $userAddressLand == "NL" ? "selected" : "" ?>>Nederland</option>
+        <option value="BE" <?= $userAddressLand == "BE" ? "selected" : "" ?>>België</option>
+        <option value="DE" <?= $userAddressLand == "DE" ? "selected" : "" ?>>Duitsland</option>
+        <option value="FR" <?= $userAddressLand == "FR" ? "selected" : "" ?>>Frankrijk</option>
+        <option value="UK" <?= $userAddressLand == "UK" ? "selected" : "" ?>>Verenigd Koninkrijk</option>
       </select>
       </div>
       <!-- verwijdert de highlight als het adres is ingevuld -->
@@ -135,7 +214,7 @@ if(isset($_GET["error"])) {
       ?>
 
       <div class="settings_buttons">
-        <button type="submit" class="btn">Opslaan</button>
+        <button type="submit" class="btn" name="updateSettings">Opslaan</button>
         <button type="button" class="btn" onclick="cancelsettingsOverlay()">Annuleren</button>
       </div>
 
