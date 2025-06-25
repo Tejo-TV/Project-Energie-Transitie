@@ -22,26 +22,26 @@ include_once 'components/header.php';
 ?>
 <div class="dashboard-container">
     <!-- Hoofdgrid van het dashboard: grafiek, kalender, usage, kosten -->
-    <div class="dashboard-main">
+    <div id="dashboard-draggable" class="dashboard-main">
         <!-- Linksboven: grafiek met stroomverbruik (Chart.js) -->
-        <div class="chart-section">
+        <div class="draggable-box chart-section">
             <?php include_once 'components/chart.php'; ?>
         </div>
         <!-- Rechtsboven: kalender met energie-data -->
-        <div class="calendar-section">
+        <div class="draggable-box calendar-section">
             <?php include_once 'components/calendar.php'; ?>
         </div>
         <!-- Vue.js secties voor usage en kosten (linksonder en rechtsonder) -->
         <div id="vue-sections" style="display: contents;">
             <!-- Linksonder: usage by device, met show/hide knop -->
-            <div class="usage-section">
+            <div class="draggable-box usage-section">
                 <button @click="showUsage = !showUsage">{{ showUsage ? 'Hide' : 'Show' }} Usage by device</button>
                 <div v-show="showUsage">
                     <?php include_once 'components/usage.php'; ?>
                 </div>
             </div>
             <!-- Rechtsonder: energiekosten, met maand-selector -->
-            <div class="cost-section">
+            <div class="draggable-box cost-section">
                 <div class="energy-cost">
                     <h4>Energi kost<br>
                         <select v-model="month">
@@ -95,6 +95,15 @@ createApp({
     }
   }
 }).mount('#vue-sections');
+</script>
+<!-- Add SortableJS for drag-and-drop -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script>
+  new Sortable(document.getElementById('dashboard-draggable'), {
+    animation: 200,
+    handle: '.draggable-box',
+    ghostClass: 'sortable-ghost'
+  });
 </script>
 </body>
 </html> 
