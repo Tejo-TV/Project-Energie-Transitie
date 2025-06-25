@@ -19,15 +19,16 @@
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
 
-  if($userRol == 2){
-    // exit();
-  } else if($userRol == 3){
+  if($userRol == 3){
     echo "<script>window.location.href = '../index.php?error=unknownError';</script>";
     exit();
   } else {
     echo "<script>window.location.href = '../index.php?error=wrongWayAdmin';</script>";
     exit();
   }
+} else {
+    echo "<script>window.location.href = '../pages/login.php?error=wrongWay';</script>";
+    exit();
 }
 
 if(isset($_GET["error"])) {
