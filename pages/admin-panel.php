@@ -19,7 +19,8 @@
     $userAddressId = $storedUser->getAddressId();
     $userRol = $storedUser->getRoleId();
 
-  if($userRol == 3){
+    if($userRol == 2) {
+  } else if($userRol == 3){
     echo "<script>window.location.href = '../index.php?error=unknownError';</script>";
     exit();
   } else {

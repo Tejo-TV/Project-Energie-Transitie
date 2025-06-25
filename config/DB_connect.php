@@ -10,7 +10,7 @@
     $db_server = "localhost"; // server naam
     $db_user = "root"; // usernaam (default is de naam root)
     $db_pass = ""; // wachtwoord (default is er geen wachtwoord)
-    $db_name = "Energie_db"; // naam database
+    $db_name = "energie_db"; // naam database
     $conn = "";
 
 //connectie met database
