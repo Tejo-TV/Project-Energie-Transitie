@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #f4f4f4;
+    background-color: #ffffff;
     font-family: Arial, sans-serif;
 }
 
@@ -109,6 +109,82 @@ body {
     display: none;
     bottom: 0;
   }
+}
+
+/* ---------------------
+    header style
+--------------------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: #b7e3e3;
+    min-height: 70px;
+    position: relative;
+}
+.logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 48px;
+}
+.search-bar {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar input[type="text"] {
+    width: 320px;
+    max-width: 100%;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #a2e3c4;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.header-links {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.header_logUit {
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff1313;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header_logUit:hover {
+    background-color: #fb6363;
+}
+
+.header_settings {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header_settings:hover {
+    background-color: #0056b3;
 }
 
 
@@ -612,40 +688,52 @@ body {
   background-color: #0056b3;
 }
 
-
-
 /* ---------------------
-    header style
+    admin panel
 --------------------- */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 32px;
-    background: #b7e3e3;
-    min-height: 70px;
-    position: relative;
-}
-.logo {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    
-}
-.logo img {
-    height: 110px;
-    width: 110px;
-}
-.search-bar {
-    position: absolute;
-    top: 50px; 
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.admin-welkom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaf6f7;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
 }
 
+.admin-welkom p {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.panel-grid {
+  display: flex;
+  height: calc(100vh - 242px);
+  padding: 10px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.panel-field1 {
+  background-color: #eaf6f7;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.right-panels {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.panel-field2,
+.panel-field3 {
+  background-color: #eaf6f7;
+  flex: 1;
+  border-radius: 10px;
+}
 .search-bar input[type="text"] {
     width: 320px;
     max-width: 100%;
@@ -654,44 +742,40 @@ body {
     border: 1px solid #a2e3c4;
     font-size: 1em;
     outline: none;
+    box-shadow: none;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+    cursor: pointer;
+}
+#chart-select:focus, #chart-select:hover {
+    border: 1.5px solid #7ec6e6;
+    background: #f4fbff;
+}
+#chart-select option {
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    color: #222;
+    font-weight: 500;
 }
-.header-links {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 18px;
+#chart-title {
+    color: #222;
+    font-size: 1rem;
+    margin-left: 10px;
+    text-shadow: none;
 }
-
-
-.header_logUit {
-    padding: 12px 24px;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #ff1313;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+#verbruikChart {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px 0 rgba(180,200,220,0.10);
+    padding: 6px;
+    margin-bottom: 10px;
 }
 
-.header_logUit:hover {
-    background-color: #fb6363;
+/* --- Draggable Dashboard Boxes --- */
+.draggable-box {
+    cursor: move;
+    transition: box-shadow 0.2s;
 }
-
-.header_settings {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.header_settings:hover {
-    background-color: #0056b3;
+.sortable-ghost {
+    opacity: 0.6;
+    background: #bcd0e5 !important;
+    box-shadow: 0 4px 16px #bcd0e5;
 }
