@@ -19,7 +19,6 @@ if (isset($_SESSION['user'])){
     $userName = $storedUser->getName();
     $userEmail = $storedUser->getEmail();
     $userAddressId = $storedUser->getAddressId();
-    $userRol = $storedUser->getRoleId();
 
 if ($userAddressId == 0) {
     $userAddressStraat = "";
@@ -46,11 +45,6 @@ if ($userAddressId == 0) {
       $userAddressStad = "";
       $userAddressLand = "NONE";
     }
-  }
-
-  if($userRol == 2){
-    echo "<script>window.location.href = 'pages/admin-panel.php?error=none';</script>";
-    exit();
   }
 
   $welcomeOverlay = "none_overlay";
