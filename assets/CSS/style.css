@@ -332,6 +332,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: default !important;
 }
 
 .usage-section {
@@ -739,4 +740,263 @@ body {
     opacity: 0.6;
     background: #bcd0e5 !important;
     box-shadow: 0 4px 16px #bcd0e5;
+}
+
+/* Enhanced calendar day styles for better UX */
+.calendar-day {
+  cursor: pointer;
+  background: #eaf6f7;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  user-select: none;
+  box-shadow: none;
+}
+.calendar-day:hover {
+  background: #b3e5fc;
+  color: #222;
+  box-shadow: 0 0 8px 2px #4bc0c0;
+  z-index: 1;
+}
+.calendar-day.selected {
+  background: #4bc0c0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px #36a2eb;
+  z-index: 2;
+}
+
+/* Dark mode calendar day styles */
+body.dark-mode .calendar-day {
+  background: #18223a;
+  color: #eaf6f7;
+  border: none;
+}
+body.dark-mode .calendar-day:hover {
+  background: #22305a;
+  color: #fff;
+  box-shadow: 0 0 8px 2px #4bc0c0;
+}
+body.dark-mode .calendar-day.selected {
+  background: #4bc0c0;
+  color: #10141a;
+  font-weight: bold;
+  box-shadow: 0 0 12px 3px #36a2eb;
+}
+
+/* --- Improved Dark Mode Styles --- */
+body.dark-mode {
+  background: #10141a;
+  color: #eaf6f7;
+}
+body.dark-mode .dashboard-header,
+body.dark-mode #dashboard-header-dynamic,
+body.dark-mode .calendar-section,
+body.dark-mode .chart-section,
+body.dark-mode .usage-section,
+body.dark-mode .cost-section,
+body.dark-mode .draggable-box {
+  background: #18223a !important;
+  color: #eaf6f7;
+  border: none;
+  box-shadow: 0 2px 12px 0 rgba(20,40,80,0.18);
+}
+body.dark-mode .chart-select-container,
+body.dark-mode #tip-app {
+  background: #18223a !important;
+  color: #7ec6e6 !important;
+  border: none;
+}
+body.dark-mode #weather-widget {
+  color: #7ec6e6;
+}
+body.dark-mode .cost-value {
+  color: #7ec6e6;
+}
+body.dark-mode .calendar-tabs button {
+  background: #18223a;
+  color: #7ec6e6;
+  border: 1px solid #4bc0c0;
+}
+body.dark-mode .calendar-tabs button.active {
+  background: #4bc0c0;
+  color: #10141a;
+}
+body.dark-mode .calendar-tabs button:hover {
+  background: #36a2eb;
+  color: #fff;
+}
+body.dark-mode #chart-select {
+  background: #18223a;
+  color: #7ec6e6;
+  border: 1px solid #4bc0c0;
+}
+body.dark-mode #chart-select:focus, body.dark-mode #chart-select:hover {
+  border: 1.5px solid #36a2eb;
+  background: #22305a;
+}
+body.dark-mode .dashboard-container {
+  background: #10141a;
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  color: #eaf6f7;
+}
+body.dark-mode .energy-cost {
+  color: #eaf6f7;
+}
+body.dark-mode .btn, body.dark-mode button, body.dark-mode select {
+  background: #22305a;
+  color: #eaf6f7;
+  border: 1px solid #4bc0c0;
+}
+body.dark-mode .btn:hover, body.dark-mode button:hover, body.dark-mode select:hover {
+  background: #36a2eb;
+  color: #fff;
+}
+
+/* --- Calendar Widget Card --- */
+.calendar-widget {
+  background: #eaf6f7;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(76,192,192,0.08);
+  padding: 18px 28px 22px 28px;
+  margin: 0 auto;
+  max-width: 340px;
+}
+
+.calendar-tabs {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.calendar-tabs button {
+  background: #fff;
+  border: 1.5px solid #b7e3e3;
+  border-radius: 7px;
+  padding: 4px 18px;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.calendar-tabs button.active, .calendar-tabs button:hover {
+  background: #b7e3e3;
+  color: #222;
+  border: 1.5px solid #4bc0c0;
+}
+
+#calendar-month, #calendar-year {
+  background: #fff;
+  color: #222;
+  border: 1.5px solid #b7e3e3;
+  border-radius: 7px;
+  padding: 4px 12px;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 2px;
+  outline: none;
+  box-shadow: none;
+  transition: border 0.2s, background 0.2s;
+}
+#calendar-month:focus, #calendar-year:focus {
+  border: 1.5px solid #4bc0c0;
+  background: #f4fbff;
+}
+
+.calendar-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px 0 rgba(76,192,192,0.06);
+  margin-top: 6px;
+}
+.calendar-table th, .calendar-table td {
+  padding: 6px 0;
+  text-align: center;
+  color: #333;
+  font-size: 1.08em;
+  font-weight: 500;
+}
+.calendar-table th {
+  color: #4bc0c0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* --- Calendar Day Styles --- */
+.calendar-day {
+  cursor: pointer;
+  background: #eaf6f7;
+  border-radius: 50%;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  user-select: none;
+  box-shadow: none;
+  font-weight: 500;
+  color: #222;
+  position: relative;
+}
+.calendar-day:hover {
+  background: #b3e5fc;
+  color: #222;
+  box-shadow: 0 0 8px 2px #4bc0c0;
+  z-index: 1;
+}
+.calendar-day.selected {
+  background: #4bc0c0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px #36a2eb;
+  z-index: 2;
+}
+.calendar-table td {
+  min-width: 32px;
+  min-height: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+.calendar-table td[style*="opacity"] {
+  opacity: 0.35 !important;
+  pointer-events: none;
+}
+
+/* --- Dark Mode Calendar --- */
+body.dark-mode .calendar-widget {
+  background: #18223a;
+  box-shadow: 0 2px 16px 0 rgba(20,40,80,0.18);
+}
+body.dark-mode .calendar-table table {
+  background: #22305a;
+  color: #eaf6f7;
+}
+body.dark-mode .calendar-table th, body.dark-mode .calendar-table td {
+  color: #eaf6f7;
+}
+body.dark-mode .calendar-day {
+  background: #22305a;
+  color: #eaf6f7;
+  border: none;
+}
+body.dark-mode .calendar-day:hover {
+  background: #36a2eb;
+  color: #fff;
+  box-shadow: 0 0 8px 2px #4bc0c0;
+}
+body.dark-mode .calendar-day.selected {
+  background: #4bc0c0;
+  color: #10141a;
+  font-weight: bold;
+  box-shadow: 0 0 12px 3px #36a2eb;
+}
+body.dark-mode #calendar-month, body.dark-mode #calendar-year {
+  background: #22305a;
+  color: #eaf6f7;
+  border: 1.5px solid #4bc0c0;
+}
+body.dark-mode #calendar-month:focus, body.dark-mode #calendar-year:focus {
+  background: #22305a;
+  border: 1.5px solid #36a2eb;
 }

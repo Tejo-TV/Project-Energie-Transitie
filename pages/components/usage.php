@@ -7,18 +7,15 @@
 // Datum		      : projectweek - periode 4 - 2025
 //---------------------------------------------------------------------------------------------------//
 ?>
-<div class="usage-device">
+<div id="usage-app" class="usage-device">
     <h4>Usage by device</h4>
-    <div class="usage-bar">
-        <span>🖥️</span>
-        <div class="bar" style="width: 70%"></div>
-    </div>
-    <div class="usage-bar">
-        <span>📱</span>
-        <div class="bar" style="width: 50%"></div>
-    </div>
-    <div class="usage-bar">
-        <span>💡</span>
-        <div class="bar" style="width: 40%"></div>
+    <div v-for="device in devices" :key="device.name" class="usage-bar" style="position: relative;">
+        <span>{{ device.icon }}</span>
+        <div class="bar" :style="{ width: device.animated + '%' }" @mouseenter="showTooltip(device)" @mouseleave="hideTooltip">
+            <transition name="fade">
+                <span v-if="tooltipDevice === device.name" class="usage-tooltip">{{ device.animated.toFixed(1) }}%</span>
+            </transition>
+        </div>
+        <span style="margin-left: 8px; font-size: 0.95em;">{{ device.label }}</span>
     </div>
 </div> 
